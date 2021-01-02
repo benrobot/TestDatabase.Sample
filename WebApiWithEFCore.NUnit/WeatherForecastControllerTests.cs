@@ -106,21 +106,22 @@ namespace TestDatabase.Sample.WebApiWithEFCore.NUnit
                 .Invoking(x => x.Get())
                 .Should()
                 .ThrowExactly<System.InvalidOperationException>()
-                .And.Message.Should().Be(@"The LINQ expression 'DbSet<Post>()
-    .Where(p0 => EF.Property<Nullable<int>>(EntityShaperExpression: 
-        EntityType: Blog
-        ValueBufferExpression: 
-            ProjectionBindingExpression: EmptyProjectionMember
-        IsNullable: False
-    , ""BlogId"") != null && object.Equals(
-        objA: (object)EF.Property<Nullable<int>>(EntityShaperExpression: 
-            EntityType: Blog
-            ValueBufferExpression: 
-                ProjectionBindingExpression: EmptyProjectionMember
-            IsNullable: False
-        , ""BlogId""), 
-        objB: (object)EF.Property<Nullable<int>>(p0, ""BlogId"")))
-    .Where(p0 => p0.PublicationDateTime > DateTimeOffset.Now.AddDays(-5))' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.");
+                .And.Message.Should().StartWith("The LINQ expression 'DbSet<Post>()");
+            //The LINQ expression 'DbSet<Post>()
+            //    .Where(p0 => EF.Property<Nullable<int>>(EntityShaperExpression: 
+            //        EntityType: Blog
+            //        ValueBufferExpression: 
+            //            ProjectionBindingExpression: EmptyProjectionMember
+            //        IsNullable: False
+            //    , "BlogId") != null && object.Equals(
+            //        objA: (object)EF.Property<Nullable<int>>(EntityShaperExpression: 
+            //            EntityType: Blog
+            //            ValueBufferExpression: 
+            //                ProjectionBindingExpression: EmptyProjectionMember
+            //            IsNullable: False
+            //        , ""BlogId""), 
+            //        objB: (object)EF.Property<Nullable<int>>(p0, "BlogId")))
+            //    .Where(p0 => p0.PublicationDateTime > DateTimeOffset.Now.AddDays(-5))' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
         }
     }
 }
