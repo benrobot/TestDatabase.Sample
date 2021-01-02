@@ -17,4 +17,4 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test (except ItemsWebApi)
-      run: dotnet test --configuration Release --no-build --verbosity normal --filter FullyQualifiedName\!~ItemsControllerTest
+      run: dotnet test --configuration Release --no-build --verbosity normal --logger "console;verbosity=detailed" --filter FullyQualifiedName\!~ItemsControllerTest

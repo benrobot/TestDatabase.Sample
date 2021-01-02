@@ -12,7 +12,7 @@ using TestDatabase.SqlServerDocker;
 
 namespace TestDatabase.Sample.WebApiWithEFCore.NUnit
 {
-    public class WeatherForecastControllerTests
+    public class WeatherForecastControllerNUnitTests
     {
         private WeatherForecastController _controllerWithSqlServer;
         private ILoggerFactory _loggerFactory;
