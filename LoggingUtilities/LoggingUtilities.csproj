@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>TestDatabase.Sample.LoggingUtilities</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

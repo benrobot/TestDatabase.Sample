@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <IsPackable>false</IsPackable>
+    <RootNamespace>TestDatabase.Sample.WebApiWithEFCore.NUnit</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TestDatabase.Sample.LoggingUtilities\TestDatabase.Sample.LoggingUtilities.csproj" />
-    <ProjectReference Include="..\TestDatabase.Sample.WebApiWithEFCore\TestDatabase.Sample.WebApiWithEFCore.csproj" />
+    <ProjectReference Include="..\LoggingUtilities\LoggingUtilities.csproj" />
+    <ProjectReference Include="..\WebApiWithEFCore\WebApiWithEFCore.csproj" />
   </ItemGroup>
 
 </Project>
