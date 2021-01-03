@@ -1,29 +1,22 @@
 ﻿using System;
-using System.IO;
 using Microsoft.Extensions.Logging;
 
 namespace TestDatabase.Sample.LoggingUtilities
 {
     public class TestLogger : ILogger
     {
-        private readonly TextWriter _writer;
+        private readonly Action<string> _logAction;
 
-        public TestLogger(TextWriter writer)
-        {
-            _writer = writer;
-        }
+        public TestLogger(Action<string> logAction) => _logAction = logAction;
+        
 
-        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
-        {
-            _writer.WriteLine(formatter.Invoke(state, exception));
-        }
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception,
+            Func<TState, Exception, string> formatter) => _logAction(formatter.Invoke(state, exception));
+        
 
         public bool IsEnabled(LogLevel logLevel) => true;
         
 
-        public IDisposable BeginScope<TState>(TState state)
-        {
-            return new TestDisposable();
-        }
+        public IDisposable BeginScope<TState>(TState state) => new TestDisposable();
     }
 }

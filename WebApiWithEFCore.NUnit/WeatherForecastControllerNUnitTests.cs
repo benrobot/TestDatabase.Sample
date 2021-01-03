@@ -21,7 +21,7 @@ namespace TestDatabase.Sample.WebApiWithEFCore.NUnit
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            var logger = new TestLogger(TestContext.Out);
+            var logger = new TestLogger(m => TestContext.Out.WriteLine(m));
             _loggerFactory = new TestLoggerFactory(logger);
 
             var dockerSqlServerDatabaseLogger = _loggerFactory.CreateLogger<SqlServerDockerDatabase>();
